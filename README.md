@@ -45,7 +45,7 @@ ___
 https://github.com/Faarz/Base-selfFarz
 cd Base-selfFarz
 npm install
-node main
+node start.js
 ```
 ## For Termux
 ```bash
@@ -55,7 +55,7 @@ pkg install nodejs git ffmpeg libwebp
 git clone https://github.com/Faarz/Base-selfFarz
 cd Base-selfFarz
 npm install
-node main
+node start.js
 ```
 
 ## Installing the FFmpeg for Windows
