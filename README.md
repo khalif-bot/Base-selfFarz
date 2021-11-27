@@ -26,11 +26,6 @@ ___
 >
 >
 
-<h3 align="center">Made with ❤️ by</h3>
-<p align="center">
-  <a href="https://github.com/Faarz/selfFarz"><img src="https://avatars.githubusercontent.com/u/81684610?s=400&u=25765902db0b709938966cf4127ac11af5eafb5d&v=4" height="128" width="128" /></a>
-</p>
-
 <p align="center">
   <a href="https://github.com/Faarz/Base-selfFarz"><img title="Author" src="https://img.shields.io/badge/Author-Marz-purple.svg?style=for-the-badge&logo=github" /></a>
 </p>
