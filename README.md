@@ -26,26 +26,6 @@ ___
 >
 >
 
-<p align="center">
-<a href="https://github.com/Faarz/Base-selfFarz/followers"><img title="Followers" src="https://img.shields.io/github/followers/Nino-chan02?color=blue&style=flat-square"></a>
-<a href="https://github.com/Faarz/Base-selfFarz/megumikato2/stargazers/"><img title="Stars" src="https://img.shields.io/github/stars/Nino-chan02/NinoWangy?color=red&style=flat-square"></a>
-<a href="https://github.com/Faarz/Base-selfFarz/megumikato2/network/members"><img title="Forks" src="https://img.shields.io/github/forks/Nino-chan02/NinoWangy?color=red&style=flat-square"></a>
-<a href="https://github.com/Faarz/Base-selfFarz/megumikato2/watchers"><img title="Watching" src="https://img.shields.io/github/watchers/Nino-chan02/NinoWangy?label=Watchers&color=blue&style=flat-square"></a>
-</p>
-
-<p align="center">
-  <a href="https://github.com/Faarz/Base-selfFarz#requirements">Requirements</a> •
-  <a href="https://github.com/Faarz/Base-selfFarz#instalasi">Installation</a> •
-  <a href="https://github.com/Faarz/Base-selfFarz">Features</a> •
-  <a href="https://github.com/Faarz/Base-selfFarz#thanks-to">Thanks to</a>
-</p>
-</div>
-
-
----
-
-
-
 # Requirements
 * [Node.js](https://nodejs.org/en/)
 * [Git](https://git-scm.com/downloads)
