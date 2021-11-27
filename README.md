@@ -5,6 +5,21 @@
 
 ___
 
+### [` ðŸ“« Contact & Support Me`](https://wa.me/6285692949920)
+### [` ðŸ“« Secound Contact`](https://wa.me/6281575900615)
+### [`ðŸ“¬ About Me `](https://instabio.cc/Faar-Z)
+## [`Api For You Bot Whatsapp`](https://api-hardi.herokuapp.com)
+
+    
+<p align="center">
+<a href="https://www.instagram.com/faaaarr__" target="_blank"><img src="https://img.shields.io/badge/Instagram-%23E4405F.svg?&style=flat-square&logo=instagram&logoColor=white" alt="Instagram"></a>
+<a href="faarz77@gmail.com" target="_blank"><img src="https://img.shields.io/badge/Gmail-D14836?style=flat-square&logo=gmail&logoColor=white" alt="Gmail"></a>
+<a href="https://wa.me/6285692949920" target="_blank"><img src="https://img.shields.io/badge/Whatsapp-%808080.svg?&style=flat-square&logo=Whatsapp&logoColor=white" alt="WhatsApp"></a>
+</p>
+
+___
+
+
 
 <img src="https://github.com/TheDudeThatCode/TheDudeThatCode/blob/master/Assets/Mario_Gameplay.gif" alt="Mario Game" width="600" />
 
