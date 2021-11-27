@@ -73,8 +73,8 @@ const _sewa = require("./lib/sewa");
 
 var kuis = false
 public = false
-shp  = '°さ⃟🦅• '
-shp1 = '🔖'
+shp  = '° 𝓯⃝🦅 • '
+shp1 = '◕'
 hit_today = []
 ky_ttt = []
 const setGelud = require('./lib/gameGelud.js')
@@ -832,7 +832,395 @@ ${shp}*${prefix}bugreport* <problem>
 farz.sendMessage(from, { contentText: `${menu}`, footerText: `© ${botName}`, buttons: [{ buttonId: `!botstat`, buttonText: { displayText: '✓ Statistic' }, type: 1 } ], headerType: 'LOCATION', locationMessage: { degreesLatitude: '', degreesLongitude: '', jpegThumbnail: fakeimage, contextInfo: {mentionedJid: [sender]}}}, 'buttonsMessage')
               break
 //===================MENUNYA============               
-     
+  //++++++BOT INFO++++++++++++++
+
+      case 'runtime':
+              reply(`${runtime(process.uptime())}`)
+              break
+       case 'donate': 
+       case 'donasi':
+              reply(setting.txtDonasi)
+              break
+       case 'sourcecode': 
+       case 'sc': 
+       case 'src':
+              reply(` *• SOURCE CODE•* : https://github.com/Faarz/Base-selfFarz`)
+              break
+      case 'ping':
+      case 'speed':
+              timestampe = speed();
+              latensie = speed() - timestampe
+              reply(`「 *𝙎𝙋𝙀𝙀𝘿 𝙏𝙀𝙎𝙏* 」\nMerespon dalam ${latensie.toFixed(4)} Sec 💬`)
+              break
+      case 'botstat':
+      case 'stat':
+      case 'info':
+              groups = farz.chats.array.filter(v => v.jid.endsWith('g.us'))
+              privat = farz.chats.array.filter(v => v.jid.endsWith('s.whatsapp.net'))
+              ram2 = `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}MB / ${Math.round(require('os').totalmem / 1024 / 1024)}MB`
+              charger = `${charging ? 'lagi dicas' : 'ga dicas'}`
+              uptime = process.uptime();
+              timestampe = speed();
+              totalChat = await farz.chats.all()
+              latensie = speed() - timestampe
+              total = math(`${groups.length}*${privat.length}`)
+            fad = `https://telegra.ph/file/c3a5ac10d8d56bdbd2c4a.jpg`
+            pic = await getBuffer(fad)
+teks = `BOT STATISTICS
+• Group Chats : ${groups.length}
+• Private Chats : ${privat.length}
+• Total Chats : ${totalChat.length}
+• Speed : ${latensie.toFixed(4)} _Second_
+• Active Time : ${kyun(uptime)}
+
+PHONE STATISTICS
+• Baterai : ${baterai}% ${charger}
+• Ram Usage : ${ram2}
+• Platform : ${os.platform()}
+• Hostname : ${os.hostname()}
+• Uptime : ${runtime(process.uptime())}
+• Wa Version: ${farz.user.phone.wa_version}
+• Os Version: ${farz.user.phone.os_version}
+• Device Manufacturer: ${farz.user.phone.device_manufacturer}
+• Device Model: ${farz.user.phone.device_model}
+• Os Build Number: ${farz.user.phone.os_build_number}`
+gbutsan = [
+{buttonId:`!donasi`,buttonText:{displayText:'DONASI'},type:1},
+{buttonId:`!owner`,buttonText:{displayText:'✓ OWNER'},type:1},
+]
+mhan = await farz.prepareMessage(from, pic, image, {thumbnail: fakeimage})
+const btnmenu = {
+imageMessage: mhan.message.imageMessage,
+contentText: `${teks}`,
+footerText: `${botName}`,
+buttons: gbutsan,
+headerType: 4
+}
+farz.sendMessage(from, btnmenu, MessageType.buttonsMessage)
+break
+//+++++++++++++++++OWNER MENU+++++++++++++++++
+    case 'self':
+if (!mek.key.fromMe && !isOwner) return reply(mess.only.owner)
+if (!public) return reply('Sudah Di Dalam Mode Self')
+public = false
+reply(' ```Success Activated Self-Mode``` ')
+break
+case 'public':
+if (!mek.key.fromMe && !isOwner) return reply(mess.only.owner)
+if (public) return reply('Sudah Di Dalam Mode Public')
+public = true
+reply(' Success Activated Public-Mode')
+break
+  case 'addupdate':
+             if (!isOwner) return reply(mess.only.owner)
+             if (!q) return reply(`Example: ${command} update fitur`)
+           _update.push(q)
+             fs.writeFileSync('./database/bot/update.json', JSON.stringify(_update))
+             reply(`Update fitur berhasil ditambahkan ke database!`)
+             break
+      case 'update':
+             let updateList = `*── 「 UPDATE BOT 」 ──*\n\n\n`
+             for (let i of _update) {
+             updateList += `࿃ *${i.replace(_update)}*\n\n`
+}
+             textImg(updateList)
+             break
+      case 'reset':
+             if (!isOwner) return reply(mess.only.owner)
+             var reset = []
+             glimit = reset
+           _update = reset
+             console.log('Hang tight, it\'s time to reset')
+             fs.writeFileSync('./database/bot/glimit.json', JSON.stringify(glimit))
+             fs.readFileSync('./database/bot/update.json', JSON.stringify(_update))
+             textImg('Oke Desu ~')
+             break
+      case 'exif':
+             if (!isOwner) return  reply(mess.only.owner)
+             if (!q) return reply(mess.wrongFormat)
+             if (!arg.split('|')) return reply(`Penggunaan ${prefix}exif nama|author`)
+             exif.create(arg.split('|')[0], arg.split('|')[1])
+             reply('sukses')
+             break	
+      case 'join': 
+             if (!q) return reply('Linknya?')
+             if (!isOwner) return reply(mess.only.owner)
+             if (!isUrl(args[0]) && !args[0].includes('https://chat.whatsapp.com/')) return reply('Linknya Invalid Tod')
+             link = args[0].replace('https://chat.whatsapp.com/','')
+             fak = farz.query({ json: ['action', 'invite', link],
+             expect200: true })
+             reply('Berhasil Masuk Grup')
+             break
+      case 'eval':
+             try {
+             if (!isOwner) return
+             sy = args.join(' ')
+             return eval(sy)
+             } catch(e) {
+             reply(`${e}`)
+}
+             break
+      case 'getquoted':
+             reply(JSON.stringify(mek.message.extendedTextMessage.contextInfo, null, 3))
+             break
+      case 'bc':
+      case 'broadcast':
+             if (!isOwner) return  reply(mess.only.owner)
+             if (args.length < 1) return reply('teks?')
+             anu = await farz.chats.all()
+             if (isMedia && !mek.message.videoMessage || isQuotedImage) {
+             const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
+             bc = await farz.downloadMediaMessage(encmedia)
+             for (let _ of anu) {
+             farz.sendMessage(_.jid, bc, image, {quoted:freply,caption: `*「 PESAN SIARAN BOT 」*\n\n${body.slice(4)}`})
+}
+             reply('Suksess broadcast')
+             } else {
+             for (let _ of anu) {
+             sendMess(_.jid, `*「 PESAN SIARAN BOT 」*\n\n${body.slice(4)}`)
+}
+             reply('Suksess broadcast')
+}
+             break
+      case 'clearall':
+             if (!isOwner) return  reply(mess.only.owner)
+             anu = await farz.chats.all()
+             farz.setMaxListeners(25)
+             for (let _ of anu) {
+             farz.deleteChat(_.jid)
+}
+             reply('Sukses delete all chat :)')
+             break
+      case 'term':
+             if (!isOwner) return
+             if (!q) return
+             exec(q, (err, stdout) => {
+             if (err) return reply(`${err}`)
+             if (stdout) {
+             reply(stdout)
+}
+})
+             break 
+      case 'shutdown':
+             if (!isOwner) return 
+             reply(`Bye...`)
+             await sleep(3000)
+             process.exit()
+             break
+      case 'restart':
+             if (!isOwner) return 
+             reply(mess.wait)
+             exec(`node main`)
+             reply('_Restarting Bot Success_')
+             break
+      case 'leaveall':
+             if (!isOwner) return  reply(mess.only.owner)
+             let totalgroup = farz.chats.array.filter(u => u.jid.endsWith('@g.us')).map(u => u.jid)
+             for (let id of totalgroup) {
+             sendMess(id, 'Byee', null)
+             await sleep(3000)
+             farz.groupLeave(id)
+}
+             break
+
+//++++++++++GRUP MENU+++++++++++++++++++++++
+      case 'kick':
+      if (!isGroupAdmins) return reply(mess.only.admin)
+             if (!isGroup) return reply(mess.only.group)
+             kick(from, mentionUser)
+             break
+      case 'add':
+      if (!isGroupAdmins) return reply(mess.only.admin)
+             if (mek.message.extendedTextMessage === null || mek.message.extendedTextMessage === undefined) {
+             entah = arg.split("|")[0]
+             entah = entah.replace(new RegExp("[()+-/ +/]", "gi"), "")
+             entah = `${entah}@s.whatsapp.net`
+             farz.groupAdd(from, [entah])
+             } else {
+             entah = mek.message.extendedTextMessage.contextInfo.participant
+             farz.groupAdd(from, [entah])
+}
+             break
+      case 'promote':
+             if (mek.message.extendedTextMessage === null || mek.message.extendedTextMessage === undefined) return;
+             if (mek.message.extendedTextMessage.contextInfo.participant === undefined) {
+             entah = mek.message.extendedTextMessage.contextInfo.mentionedJid
+             if (entah.length > 0) {
+             var mems_ids = []
+             for (let ids of entah) {
+             mems_ids.push(ids)
+}
+             farz.groupMakeAdmin(from, mems_ids)
+             } else {
+             farz.groupMakeAdmin(from, entah)
+}
+             } else {
+             entah = mek.message.extendedTextMessage.contextInfo.participant
+             farz.groupMakeAdmin(from, [entah])
+}
+             break
+      case 'demote':
+             if (mek.message.extendedTextMessage === null || mek.message.extendedTextMessage === undefined) return;
+             if (mek.message.extendedTextMessage.contextInfo.participant === undefined) {
+             entah = mek.message.extendedTextMessage.contextInfo.mentionedJid
+             if (entah.length > 0) {
+             var mems_ids = []
+             for (let ids of entah) {
+             mems_ids.push(ids)
+}
+             farz.groupDemoteAdmin(from, mems_ids)
+             } else {
+             farz.groupDemoteAdmin(from, [entah[0]])
+}
+             } else {
+             entah = mek.message.extendedTextMessage.contextInfo.participant
+             farz.groupDemoteAdmin(from, [entah])
+}
+             break
+       case 'setgrupname':
+       if (!isGroupAdmins) return reply(mess.only.admin)
+              if (!isGroup) return reply(mess.only.group)
+              if (!isBotGroupAdmins) return 
+              if (args.length == 0) return reply(`Penggunaan ${prefix}setgrupname name`)
+              farz.groupUpdateSubject(from, q)
+             .then((res) => reply(jsonformat(res)))
+             .catch((err) => reply(jsonformat(err)))
+              break
+       case 'setdesc':
+       if (!isGroupAdmins) return reply(mess.only.admin)
+              if (!isGroup) return reply(mess.only.group)
+              if (!isBotGroupAdmins) return reply(mess.only.Badmin)
+              if (args.length == 0)  return reply(`Penggunaan ${prefix}setdesc desc`)
+              farz.groupUpdateDescription(from, q)
+             .then((res) => reply(jsonformat(res)))
+             .catch((err) => reply(jsonformat(err)))
+              break
+       case 'setppgrup':
+       if (!isGroupAdmins) return reply(mess.only.admin)
+              if (!isGroup) return reply(mess.only.group)
+              if (!isBotGroupAdmins) return reply(mess.only.Badmin)
+              if (isQuotedImage) {
+              let encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : mek
+              let media = await farz.downloadMediaMessage(encmedia)
+              farz.updateProfilePicture(from, media)
+             .then((res) => reply(jsonformat(res)))
+             .catch((err) => reply(jsonformat(err)))
+              } else {
+              reply(`Kirim atau tag gambar dengan caption ${prefix}setppgrup`)
+}
+              break
+       case 'me':
+       case 'profile':
+              let Levelnye = level.getLevelingLevel(sender, _level)
+              let Xpluu = level.getLevelingXp(sender, _level)
+              let requiredXplu = 10 * Math.pow(Levelnye, 2) + 50 * Levelnye + 100
+              farz.updatePresence(from, Presence.composing)
+              try {
+              profil = await farz.getProfilePicture(`${sender.split('@')[0]}@s.whatsapp.net`)
+              } catch {
+              profil = errorImg
+}
+              thu = await farz.getStatus(`${sender.split('@')[0]}@s.whatsapp.net`, MessageType.text)
+              me = farz.user
+              uptime = process.uptime()
+              profile = `-----[ *USER INFO* ]-----\n\n✓ *Username:* ${pushname}\n✓ *Status:* ${thu.status}\n✓ *Premium*: ${isPremium ? 'Ya' : 'No'}\n✓ *Admin*: ${isGroupAdmins ? 'Ya' : 'No'}\n✓ *Prefix :* Multi Prefix\n\n=_=_=_=_=_=_=_=_=_=_=_=_=\n\nYour progress:\n✓ *Level*: ${Levelnye}\n✓ *XP*: ${Xpluu} / ${requiredXplu}`
+              buff = await getBuffer(profil)
+              farz.sendMessage(from, buff, image, {quoted: freply, caption: profile})
+              break
+       case 'afk': 
+              if (!isGroup) return reply(mess.only.group)
+              if (isAfkOn) return reply('Woe Kalo Mau Afk Jangan Nimbrung di sini')
+              const reason = q ? q : 'Nothing.'
+              afk.addAfkUser(sender, time, reason, _afk)
+              const aluty = `Fitur AFK berhasil *diaktifkan!*\n\n✓ *Ussername*: ${pushname}\n✓ *Alasan*: ${reason}`
+              reply(aluty)
+              break
+       case 'infogrup':
+       case 'infogrouup':
+       case 'grupinfo':
+       case 'groupinfo':
+              if (!isGroup) return reply(mess.only.group)
+              try {
+              var pic = await farz.getProfilePicture(from)
+              } catch {
+              var pic = 'https://i.ibb.co/Tq7d7TZ/age-hananta-495-photo.png'
+}
+              let ingfo = `*•G R O U P I N F O•*\n\n*Name :* ${groupName}\n*ID Grup :* ${from}\n*Dibuat :* ${moment(`${groupMetadata.creation}` * 1000).tz('Asia/Jakarta').format('DD/MM/YYYY HH:mm:ss')}\n*Owner Grup :* @${groupMetadata.owner.split('@')[0]}\n*Jumlah Admin :* ${groupAdmins.length}\n*Jumlah Peserta :* ${groupMembers.length}\n*Welcome :* ${isWelkom ? 'Aktif' : 'Mati'}\n*AntiLink :* ${isAntiLink ? 'Aktif' : 'Mati'}\n*Desc :* \n${groupMetadata.desc}`
+              farz.sendMessage(from, await getBuffer(pic), image, {quoted: mek, caption: ingfo, contextInfo: {"mentionedJid": [groupMetadata.owner.replace('@c.us', '@s.whatsapp.net')]}})
+              break
+       case 'tagall':
+       if (!isGroupAdmins) return reply(mess.only.admin)
+       if (!isGroup) return fakestatus('```KHUSUS GRUP BRO```')
+					members_id = []
+					teks = (args.length > 1) ? body.slice(8).trim() : ''
+					teks += '\n\n'
+					for (let mem of groupMembers) {
+					teks += `@${mem.jid.split('@')[0]}\n`
+					members_id.push(mem.jid)
+					}
+					mentions(teks, members_id, true)
+			break
+       case 'kickall': // Anti Banned
+if (!isOwner) return  reply(mess.only.owner)
+  for (let i of groupMembers) {
+              await kickMember(from, [i.jid])
+}
+              break
+       case 'leave':
+       if (!isOwner) return  reply(mess.only.owner)
+              if (!isGroup) return reply(mess.only.group)
+              setTimeout( () => {
+              farz.groupLeave(from) 
+              }, 2000)
+              setTimeout( () => {
+              reply('Byee...')
+              }, 0)
+              break
+       case 'online':
+       case 'listonline':
+       case 'here':                
+             if (!isGroup) return reply(`Only group`)
+             try {
+             let ido = args && /\d+\-\d+@g.us/.test(args[0]) ? args[0] : from
+             let online = [...Object.keys(farz.chats.get(ido).presences), farz.user.jid]
+             farz.sendMessage(from, 'List Online:\n' + online.map(v => '- @' + v.replace(/@.+/, '')).join `\n`, text, { quoted: mek, contextInfo: { mentionedJid: online }})
+             } catch (e) {
+             reply(`${e}`)
+}
+             break
+      case 'hidetag':
+      if (!isGroupAdmins) return reply(mess.only.admin)
+             try {
+             quotedText = mek.message.extendedTextMessage.contextInfo.quotedMessage.conversation
+             hideTag(from, `${quotedText}`)
+             } catch {
+             hideTag(from, `${q}`)
+}
+             break
+      case 'sider':
+             if(!isGroup) return reply(mess.only.group)
+             try {
+             infom = await farz.messageInfo(from, mek.message.extendedTextMessage.contextInfo.stanzaId)
+             tagg = []
+             teks = `*• Dibaca oleh:*\n\n`
+             for(let i of infom.reads){
+             teks += '@' + i.jid.split('@')[0] + '\n'
+             teks += `> ` + moment(`${i.t}` * 1000).tz('Asia/Jakarta').format('DD/MM/YYYY HH:mm:ss') + '\n\n'
+             tagg.push(i.jid)
+}
+             teks += `*• Tersampaikan pada:*\n\n`
+             for(let i of infom.deliveries){
+             teks += '@' + i.jid.split('@')[0] + '\n'
+             teks += `> ` + moment(`${i.t}` * 1000).tz('Asia/Jakarta').format('DD/MM/YYYY HH:mm:ss') + '\n\n'
+             tagg.push(i.jid)
+}
+             mentions(teks, tagg, true)
+             } catch (e) {
+             console.log(color(e))
+             reply('Reply chat bot!')
+}
+             break
+//+++++++++FUN MENU+++++++++++++++++
         case 'limitgame': 
         case 'balance': 
                const balance = atm.checkATMuser(sender, _uang)
@@ -1919,393 +2307,7 @@ break
                reply(mess.wrongFormat)
 }
                break
-//------------------< Ingfo Bot >-------------------
-case 'self':
-if (!mek.key.fromMe && !isOwner) return reply(mess.only.owner)
-if (!public) return reply('Sudah Di Dalam Mode Self')
-public = false
-reply(' ```Success Activated Self-Mode``` ')
-break
-case 'public':
-if (!mek.key.fromMe && !isOwner) return reply(mess.only.owner)
-if (public) return reply('Sudah Di Dalam Mode Public')
-public = true
-reply(' Success Activated Public-Mode')
-break
-      case 'runtime':
-              reply(`${runtime(process.uptime())}`)
-              break
-       case 'donate': 
-       case 'donasi':
-              reply(setting.txtDonasi)
-              break
-       case 'sourcecode': 
-       case 'sc': 
-       case 'src':
-              reply(` *• SOURCE CODE•* : https://github.com/Faarz/Base-selfFarz`)
-              break
-      case 'ping':
-      case 'speed':
-              timestampe = speed();
-              latensie = speed() - timestampe
-              reply(`「 *𝙎𝙋𝙀𝙀𝘿 𝙏𝙀𝙎𝙏* 」\nMerespon dalam ${latensie.toFixed(4)} Sec 💬`)
-              break
-      case 'botstat':
-      case 'stat':
-      case 'info':
-              groups = farz.chats.array.filter(v => v.jid.endsWith('g.us'))
-              privat = farz.chats.array.filter(v => v.jid.endsWith('s.whatsapp.net'))
-              ram2 = `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}MB / ${Math.round(require('os').totalmem / 1024 / 1024)}MB`
-              charger = `${charging ? 'lagi dicas' : 'ga dicas'}`
-              uptime = process.uptime();
-              timestampe = speed();
-              totalChat = await farz.chats.all()
-              latensie = speed() - timestampe
-              total = math(`${groups.length}*${privat.length}`)
-            fad = `https://telegra.ph/file/c3a5ac10d8d56bdbd2c4a.jpg`
-            pic = await getBuffer(fad)
-teks = `BOT STATISTICS
-• Group Chats : ${groups.length}
-• Private Chats : ${privat.length}
-• Total Chats : ${totalChat.length}
-• Speed : ${latensie.toFixed(4)} _Second_
-• Active Time : ${kyun(uptime)}
 
-PHONE STATISTICS
-• Baterai : ${baterai}% ${charger}
-• Ram Usage : ${ram2}
-• Platform : ${os.platform()}
-• Hostname : ${os.hostname()}
-• Uptime : ${runtime(process.uptime())}
-• Wa Version: ${farz.user.phone.wa_version}
-• Os Version: ${farz.user.phone.os_version}
-• Device Manufacturer: ${farz.user.phone.device_manufacturer}
-• Device Model: ${farz.user.phone.device_model}
-• Os Build Number: ${farz.user.phone.os_build_number}`
-gbutsan = [
-{buttonId:`!donasi`,buttonText:{displayText:'DONASI'},type:1},
-{buttonId:`!owner`,buttonText:{displayText:'✓ OWNER'},type:1},
-]
-mhan = await farz.prepareMessage(from, pic, image, {thumbnail: fakeimage})
-const btnmenu = {
-imageMessage: mhan.message.imageMessage,
-contentText: `${teks}`,
-footerText: `${botName}`,
-buttons: gbutsan,
-headerType: 4
-}
-farz.sendMessage(from, btnmenu, MessageType.buttonsMessage)
-break
-//------------------< Owner >-------------------
-      case 'addupdate':
-             if (!isOwner) return reply(mess.only.owner)
-             if (!q) return reply(`Example: ${command} update fitur`)
-           _update.push(q)
-             fs.writeFileSync('./database/bot/update.json', JSON.stringify(_update))
-             reply(`Update fitur berhasil ditambahkan ke database!`)
-             break
-      case 'update':
-             let updateList = `*── 「 UPDATE BOT 」 ──*\n\n\n`
-             for (let i of _update) {
-             updateList += `࿃ *${i.replace(_update)}*\n\n`
-}
-             textImg(updateList)
-             break
-      case 'reset':
-             if (!isOwner) return reply(mess.only.owner)
-             var reset = []
-             glimit = reset
-           _update = reset
-             console.log('Hang tight, it\'s time to reset')
-             fs.writeFileSync('./database/bot/glimit.json', JSON.stringify(glimit))
-             fs.readFileSync('./database/bot/update.json', JSON.stringify(_update))
-             textImg('Oke Desu ~')
-             break
-      case 'exif':
-             if (!isOwner) return  reply(mess.only.owner)
-             if (!q) return reply(mess.wrongFormat)
-             if (!arg.split('|')) return reply(`Penggunaan ${prefix}exif nama|author`)
-             exif.create(arg.split('|')[0], arg.split('|')[1])
-             reply('sukses')
-             break	
-      case 'join': 
-             if (!q) return reply('Linknya?')
-             if (!isOwner) return reply(mess.only.owner)
-             if (!isUrl(args[0]) && !args[0].includes('https://chat.whatsapp.com/')) return reply('Linknya Invalid Tod')
-             link = args[0].replace('https://chat.whatsapp.com/','')
-             fak = farz.query({ json: ['action', 'invite', link],
-             expect200: true })
-             reply('Berhasil Masuk Grup')
-             break
-      case 'eval':
-             try {
-             if (!isOwner) return
-             sy = args.join(' ')
-             return eval(sy)
-             } catch(e) {
-             reply(`${e}`)
-}
-             break
-      case 'getquoted':
-             reply(JSON.stringify(mek.message.extendedTextMessage.contextInfo, null, 3))
-             break
-      case 'bc':
-      case 'broadcast':
-             if (!isOwner) return  reply(mess.only.owner)
-             if (args.length < 1) return reply('teks?')
-             anu = await farz.chats.all()
-             if (isMedia && !mek.message.videoMessage || isQuotedImage) {
-             const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
-             bc = await farz.downloadMediaMessage(encmedia)
-             for (let _ of anu) {
-             farz.sendMessage(_.jid, bc, image, {quoted:freply,caption: `*「 PESAN SIARAN BOT 」*\n\n${body.slice(4)}`})
-}
-             reply('Suksess broadcast')
-             } else {
-             for (let _ of anu) {
-             sendMess(_.jid, `*「 PESAN SIARAN BOT 」*\n\n${body.slice(4)}`)
-}
-             reply('Suksess broadcast')
-}
-             break
-      case 'clearall':
-             if (!isOwner) return  reply(mess.only.owner)
-             anu = await farz.chats.all()
-             farz.setMaxListeners(25)
-             for (let _ of anu) {
-             farz.deleteChat(_.jid)
-}
-             reply('Sukses delete all chat :)')
-             break
-      case 'term':
-             if (!isOwner) return
-             if (!q) return
-             exec(q, (err, stdout) => {
-             if (err) return reply(`${err}`)
-             if (stdout) {
-             reply(stdout)
-}
-})
-             break 
-      case 'shutdown':
-             if (!isOwner) return 
-             reply(`Bye...`)
-             await sleep(3000)
-             process.exit()
-             break
-      case 'restart':
-             if (!isOwner) return 
-             reply(mess.wait)
-             exec(`node main`)
-             reply('_Restarting Bot Success_')
-             break
-      case 'leaveall':
-             if (!isOwner) return  reply(mess.only.owner)
-             let totalgroup = farz.chats.array.filter(u => u.jid.endsWith('@g.us')).map(u => u.jid)
-             for (let id of totalgroup) {
-             sendMess(id, 'Byee', null)
-             await sleep(3000)
-             farz.groupLeave(id)
-}
-             break
-
-//------------------< G R U P >-------------------
-      case 'kick':
-      if (!isGroupAdmins) return reply(mess.only.admin)
-             if (!isGroup) return reply(mess.only.group)
-             kick(from, mentionUser)
-             break
-      case 'add':
-      if (!isGroupAdmins) return reply(mess.only.admin)
-             if (mek.message.extendedTextMessage === null || mek.message.extendedTextMessage === undefined) {
-             entah = arg.split("|")[0]
-             entah = entah.replace(new RegExp("[()+-/ +/]", "gi"), "")
-             entah = `${entah}@s.whatsapp.net`
-             farz.groupAdd(from, [entah])
-             } else {
-             entah = mek.message.extendedTextMessage.contextInfo.participant
-             farz.groupAdd(from, [entah])
-}
-             break
-      case 'promote':
-             if (mek.message.extendedTextMessage === null || mek.message.extendedTextMessage === undefined) return;
-             if (mek.message.extendedTextMessage.contextInfo.participant === undefined) {
-             entah = mek.message.extendedTextMessage.contextInfo.mentionedJid
-             if (entah.length > 0) {
-             var mems_ids = []
-             for (let ids of entah) {
-             mems_ids.push(ids)
-}
-             farz.groupMakeAdmin(from, mems_ids)
-             } else {
-             farz.groupMakeAdmin(from, entah)
-}
-             } else {
-             entah = mek.message.extendedTextMessage.contextInfo.participant
-             farz.groupMakeAdmin(from, [entah])
-}
-             break
-      case 'demote':
-             if (mek.message.extendedTextMessage === null || mek.message.extendedTextMessage === undefined) return;
-             if (mek.message.extendedTextMessage.contextInfo.participant === undefined) {
-             entah = mek.message.extendedTextMessage.contextInfo.mentionedJid
-             if (entah.length > 0) {
-             var mems_ids = []
-             for (let ids of entah) {
-             mems_ids.push(ids)
-}
-             farz.groupDemoteAdmin(from, mems_ids)
-             } else {
-             farz.groupDemoteAdmin(from, [entah[0]])
-}
-             } else {
-             entah = mek.message.extendedTextMessage.contextInfo.participant
-             farz.groupDemoteAdmin(from, [entah])
-}
-             break
-       case 'setgrupname':
-       if (!isGroupAdmins) return reply(mess.only.admin)
-              if (!isGroup) return reply(mess.only.group)
-              if (!isBotGroupAdmins) return 
-              if (args.length == 0) return reply(`Penggunaan ${prefix}setgrupname name`)
-              farz.groupUpdateSubject(from, q)
-             .then((res) => reply(jsonformat(res)))
-             .catch((err) => reply(jsonformat(err)))
-              break
-       case 'setdesc':
-       if (!isGroupAdmins) return reply(mess.only.admin)
-              if (!isGroup) return reply(mess.only.group)
-              if (!isBotGroupAdmins) return reply(mess.only.Badmin)
-              if (args.length == 0)  return reply(`Penggunaan ${prefix}setdesc desc`)
-              farz.groupUpdateDescription(from, q)
-             .then((res) => reply(jsonformat(res)))
-             .catch((err) => reply(jsonformat(err)))
-              break
-       case 'setppgrup':
-       if (!isGroupAdmins) return reply(mess.only.admin)
-              if (!isGroup) return reply(mess.only.group)
-              if (!isBotGroupAdmins) return reply(mess.only.Badmin)
-              if (isQuotedImage) {
-              let encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM', 'm')).message.extendedTextMessage.contextInfo : mek
-              let media = await farz.downloadMediaMessage(encmedia)
-              farz.updateProfilePicture(from, media)
-             .then((res) => reply(jsonformat(res)))
-             .catch((err) => reply(jsonformat(err)))
-              } else {
-              reply(`Kirim atau tag gambar dengan caption ${prefix}setppgrup`)
-}
-              break
-       case 'me':
-       case 'profile':
-              let Levelnye = level.getLevelingLevel(sender, _level)
-              let Xpluu = level.getLevelingXp(sender, _level)
-              let requiredXplu = 10 * Math.pow(Levelnye, 2) + 50 * Levelnye + 100
-              farz.updatePresence(from, Presence.composing)
-              try {
-              profil = await farz.getProfilePicture(`${sender.split('@')[0]}@s.whatsapp.net`)
-              } catch {
-              profil = errorImg
-}
-              thu = await farz.getStatus(`${sender.split('@')[0]}@s.whatsapp.net`, MessageType.text)
-              me = farz.user
-              uptime = process.uptime()
-              profile = `-----[ *USER INFO* ]-----\n\n✓ *Username:* ${pushname}\n✓ *Status:* ${thu.status}\n✓ *Premium*: ${isPremium ? 'Ya' : 'No'}\n✓ *Admin*: ${isGroupAdmins ? 'Ya' : 'No'}\n✓ *Prefix :* Multi Prefix\n\n=_=_=_=_=_=_=_=_=_=_=_=_=\n\nYour progress:\n✓ *Level*: ${Levelnye}\n✓ *XP*: ${Xpluu} / ${requiredXplu}`
-              buff = await getBuffer(profil)
-              farz.sendMessage(from, buff, image, {quoted: freply, caption: profile})
-              break
-       case 'afk': 
-              if (!isGroup) return reply(mess.only.group)
-              if (isAfkOn) return reply('Woe Kalo Mau Afk Jangan Nimbrung di sini')
-              const reason = q ? q : 'Nothing.'
-              afk.addAfkUser(sender, time, reason, _afk)
-              const aluty = `Fitur AFK berhasil *diaktifkan!*\n\n✓ *Ussername*: ${pushname}\n✓ *Alasan*: ${reason}`
-              reply(aluty)
-              break
-       case 'infogrup':
-       case 'infogrouup':
-       case 'grupinfo':
-       case 'groupinfo':
-              if (!isGroup) return reply(mess.only.group)
-              try {
-              var pic = await farz.getProfilePicture(from)
-              } catch {
-              var pic = 'https://i.ibb.co/Tq7d7TZ/age-hananta-495-photo.png'
-}
-              let ingfo = `*•G R O U P I N F O•*\n\n*Name :* ${groupName}\n*ID Grup :* ${from}\n*Dibuat :* ${moment(`${groupMetadata.creation}` * 1000).tz('Asia/Jakarta').format('DD/MM/YYYY HH:mm:ss')}\n*Owner Grup :* @${groupMetadata.owner.split('@')[0]}\n*Jumlah Admin :* ${groupAdmins.length}\n*Jumlah Peserta :* ${groupMembers.length}\n*Welcome :* ${isWelkom ? 'Aktif' : 'Mati'}\n*AntiLink :* ${isAntiLink ? 'Aktif' : 'Mati'}\n*Desc :* \n${groupMetadata.desc}`
-              farz.sendMessage(from, await getBuffer(pic), image, {quoted: mek, caption: ingfo, contextInfo: {"mentionedJid": [groupMetadata.owner.replace('@c.us', '@s.whatsapp.net')]}})
-              break
-       case 'tagall':
-       if (!isGroupAdmins) return reply(mess.only.admin)
-       if (!isGroup) return fakestatus('```KHUSUS GRUP BRO```')
-					members_id = []
-					teks = (args.length > 1) ? body.slice(8).trim() : ''
-					teks += '\n\n'
-					for (let mem of groupMembers) {
-					teks += `@${mem.jid.split('@')[0]}\n`
-					members_id.push(mem.jid)
-					}
-					mentions(teks, members_id, true)
-			break
-       case 'kickall': // Anti Banned
-if (!isOwner) return  reply(mess.only.owner)
-  for (let i of groupMembers) {
-              await kickMember(from, [i.jid])
-}
-              break
-       case 'leave':
-       if (!isOwner) return  reply(mess.only.owner)
-              if (!isGroup) return reply(mess.only.group)
-              setTimeout( () => {
-              farz.groupLeave(from) 
-              }, 2000)
-              setTimeout( () => {
-              reply('Byee...')
-              }, 0)
-              break
-       case 'online':
-       case 'listonline':
-       case 'here':                
-             if (!isGroup) return reply(`Only group`)
-             try {
-             let ido = args && /\d+\-\d+@g.us/.test(args[0]) ? args[0] : from
-             let online = [...Object.keys(farz.chats.get(ido).presences), farz.user.jid]
-             farz.sendMessage(from, 'List Online:\n' + online.map(v => '- @' + v.replace(/@.+/, '')).join `\n`, text, { quoted: mek, contextInfo: { mentionedJid: online }})
-             } catch (e) {
-             reply(`${e}`)
-}
-             break
-      case 'hidetag':
-      if (!isGroupAdmins) return reply(mess.only.admin)
-             try {
-             quotedText = mek.message.extendedTextMessage.contextInfo.quotedMessage.conversation
-             hideTag(from, `${quotedText}`)
-             } catch {
-             hideTag(from, `${q}`)
-}
-             break
-      case 'sider':
-             if(!isGroup) return reply(mess.only.group)
-             try {
-             infom = await farz.messageInfo(from, mek.message.extendedTextMessage.contextInfo.stanzaId)
-             tagg = []
-             teks = `*• Dibaca oleh:*\n\n`
-             for(let i of infom.reads){
-             teks += '@' + i.jid.split('@')[0] + '\n'
-             teks += `> ` + moment(`${i.t}` * 1000).tz('Asia/Jakarta').format('DD/MM/YYYY HH:mm:ss') + '\n\n'
-             tagg.push(i.jid)
-}
-             teks += `*• Tersampaikan pada:*\n\n`
-             for(let i of infom.deliveries){
-             teks += '@' + i.jid.split('@')[0] + '\n'
-             teks += `> ` + moment(`${i.t}` * 1000).tz('Asia/Jakarta').format('DD/MM/YYYY HH:mm:ss') + '\n\n'
-             tagg.push(i.jid)
-}
-             mentions(teks, tagg, true)
-             } catch (e) {
-             console.log(color(e))
-             reply('Reply chat bot!')
-}
-             break
 //------------------< Fun >-------------------
        case 'wangy':
               if (!q) return
@@ -2944,7 +2946,8 @@ console.log('[',color('TEXT','teal'),']',`Message : ${budy} From`, color(pushnam
     e = String(e)
     if (!e.includes("this.isZero")) {
 	console.log('Message : %s', color(e, 'green'))
-        }
+        farz.sendMessage(`${owner}@s.whatsapp.net`, `─────「 *ALERT-ERROR* 」─────\n\n\`\`\`${e}\`\`\`\n\n────────────────────`, MessageType.text, {contextInfo: { forwardingScore: 508, isForwarded: false, externalAdReply:{title: "Farz",body:"",previewType:"PHOTO",thumbnail:fakeimage, sourceUrl:"https://youtu.be/mw9tozDy8ok"}}})
+}
 	}
 }
 
