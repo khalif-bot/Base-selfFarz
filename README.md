@@ -3,14 +3,6 @@
 
 <img align="center" height="auto" src="https://telegra.ph/file/5c1457d9759ecc7c7072f.jpg/u/55822959?s=460&u=98e06e04babbf38abadbcef21413060992a40d71&v=4"/>
 
-___
-
-### [`« Contact & Support Me`](https://wa.me/6285692949920)
-### [`« Secound Contact`](https://wa.me/6281575900615)
-### [`¬ About Me `](https://instabio.cc/Faar-Z)
-## [`Api For You Bot Whatsapp`](https://api-hardi.herokuapp.com)
-
-    
 <p align="center">
 <a href="https://www.instagram.com/faaaarr__" target="_blank"><img src="https://img.shields.io/badge/Instagram-%23E4405F.svg?&style=flat-square&logo=instagram&logoColor=white" alt="Instagram"></a>
 <a href="faarz77@gmail.com" target="_blank"><img src="https://img.shields.io/badge/Gmail-D14836?style=flat-square&logo=gmail&logoColor=white" alt="Gmail"></a>
@@ -18,7 +10,6 @@ ___
 </p>
 
 ___
-
 
 
 <img src="https://github.com/TheDudeThatCode/TheDudeThatCode/blob/master/Assets/Mario_Gameplay.gif" alt="Mario Game" width="600" />
@@ -97,10 +88,15 @@ Jika berhasil, akan memberikanmu pesan seperti: `SUCCESS: specified value was sa
 ```cmd
 webpmux -version
 ```
+___
 
-# Features
-- Cek [disini](https://github.com/Nino-chan02/NinoWangyy/blob/main/message/help.js)
+### [`« Contact & Support Me`](https://wa.me/6285692949920)
+### [`« Secound Contact`](https://wa.me/6281575900615)
+### [`¬ About Me `](https://instabio.cc/Faar-Z)
+## [`Api For You Bot Whatsapp`](https://api-hardi.herokuapp.com)
 
-# MAKASIH LORT
+    
+
+# Thanks To
 * [ My self ]
 * [ Tsc Team ]
