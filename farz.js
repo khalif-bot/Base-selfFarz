@@ -4,6 +4,10 @@
 * Note:
 * Base Self-Bot
 * Script ini jangan diperjual belikan hargai creator
+* Thanks To
+* • My Self
+* • My Partner
+* • TSC Team
 **/
 
 ///--------------------------------------------------------------\\\
