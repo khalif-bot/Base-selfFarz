@@ -5,9 +5,9 @@
 
 ___
 
-### [` ðŸ“« Contact & Support Me`](https://wa.me/6285692949920)
-### [` ðŸ“« Secound Contact`](https://wa.me/6281575900615)
-### [`ðŸ“¬ About Me `](https://instabio.cc/Faar-Z)
+### [`« Contact & Support Me`](https://wa.me/6285692949920)
+### [`« Secound Contact`](https://wa.me/6281575900615)
+### [`¬ About Me `](https://instabio.cc/Faar-Z)
 ## [`Api For You Bot Whatsapp`](https://api-hardi.herokuapp.com)
 
     
